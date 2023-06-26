@@ -1,19 +1,19 @@
 # facial-emotion-recognition-service
 A public readme for all organization projects
 
-# 1 Project Outline
+## 1 Project Outline
 This is a project to:
 - use deep learning techniques to train a model on images of isolated human faces and recognize the emotion expressed therein
 - use image segmentation techniques to isolate faces in _any_ image and perform the abovementioned classification task on each face
 - provide an interface (a console app, an API, and/or a web UI) to be able to use the trained model for inference on any custom image
 
-# 2 Project Structure
+## 2 Project Structure
 We use the following repos for this project:
 - docker-compose
 - ai-fer-server 
 - fers-bff
 
-# 3 Project Architecture
+## 3 Project Architecture
 ```
             +---------+
             |model.h5 <--------+
@@ -36,12 +36,12 @@ We use the following repos for this project:
 +----------+
 ```
 
-## 3.1 The "AI" Model
+### 3.1 The "AI" Model
 Currently, model training is performed independently in Jupyter Notebook. We plan to bring it in as a separate repo. 
 The model was trained on Google Colab with a GPU back-end. 
 The resulting file containing the trained weights ("the model file") is not uploaded to this repo as it can get fairly large in size.
 
-# 4 Instructions on How to Set Up the App
+## 4 Instructions on How to Set Up the App
 1. Install docker & docker-compose.
 2. Clone the following repos:  
   2.1. https://github.com/facial-emotion-recognition-service/docker-compose  
@@ -70,7 +70,7 @@ The resulting file containing the trained weights ("the model file") is not uplo
 21. Open the browser to use/test the app. See next section.
 22. Shut down the docker containers by opening a new terminal and running the command: `docker-compose -f docker-compose-ai-bff.yaml down`
 
-# 5 Instructions on How to Use the App
+## 5 Instructions on How to Use the App
 1. Open the browser and navigate to the url http://localhost:8080/swagger-ui/index.html
 2. Use the following 3 api endpoints of OpenAI (Swagger) in order:  
   2.1. `POST` http://localhost:8080/api/v1/file/upload  
