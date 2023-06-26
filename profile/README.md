@@ -37,7 +37,7 @@ We use the following repos for this project:
 ```
 
 ## 3.1 The "AI" Model
-Currently, model training is performed independently in the Jupyter notebooks. We plan to bring it in as a separate repo. 
+Currently, model training is performed independently in Jupyter Notebook. We plan to bring it in as a separate repo. 
 The model was trained on Google Colab with a GPU back-end. 
 The resulting file containing the trained weights ("the model file") is not uploaded to this repo as it can get fairly large in size.
 
@@ -68,7 +68,7 @@ The resulting file containing the trained weights ("the model file") is not uplo
   16.1. Open terminal/cmd in `docker-compose/compose`.  
   16.2. Run `docker-compose -f docker-compose-ai-bff.yaml up`.
 21. Open the browser to use/test the app. See next section.
-22. Stop the dockers by opening a new terminal and running the command: `docker-compose -f docker-compose-ai-bff.yaml down`
+22. Shut down the docker containers by opening a new terminal and running the command: `docker-compose -f docker-compose-ai-bff.yaml down`
 
 # 5 Instructions on How to Use the App
 1. Open the browser and navigate to the url http://localhost:8080/swagger-ui/index.html
@@ -78,6 +78,6 @@ The resulting file containing the trained weights ("the model file") is not uplo
   2.3. `GET` http://localhost:8080/api/v1/report/download/{uid}
 
 **NOTE:** The UID should be the same across all 3 calls. Do the calls in order. 
-- The first calls asks to upload an image of an isolated face. It return a UID.
+- The first calls asks to upload an image of an isolated face. It returns a UID.
 - The second one processes that image and creates a json report using the UID.
 - The third downloads the json report using the UID.
