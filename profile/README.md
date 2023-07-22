@@ -48,7 +48,7 @@ The resulting file containing the trained weights ("the model file") is not uplo
   2.2. https://github.com/facial-emotion-recognition-service/fers-bff  
   2.3. https://github.com/facial-emotion-recognition-service/ai-fer-server
 3. Create a folder to be used as a shared volume on your host (local machine). We will refer to this as `shared_volume` going forward.
-4. Create the following sub-folders inside the `shared_volume` folder: 
+4. Create the following sub-folders inside the `shared_volume` folder:  
   4.1. `models`  
   4.2. `config`  
   4.3. `input_images`  
