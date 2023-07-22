@@ -60,10 +60,10 @@ The resulting file containing the trained weights ("the model file") is not uplo
 8. Build the `fers-bff` docker image.  
   8.1. Open terminal/cmd in `fers-bff`.  
   8.2. Run `mvn clean install`.  
-  8.3. Run `docker build -t esense-bff`.
+  8.3. Run `docker build -t esense-bff .`.
 9. Build the `emosense` docker image.  
   9.1. Open terminal/cmd in `ai-fer-server`.  
-  9.2. Run `docker build -t esense`.
+  9.2. Run `docker build -t esense .`.
 10. Run docker-compose.  
   10.1. Open terminal/cmd in `docker-compose/compose`.  
   10.2. Run `docker-compose -f docker-compose-ai-bff.yaml up`.
