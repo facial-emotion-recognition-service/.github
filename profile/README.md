@@ -55,20 +55,20 @@ The resulting file containing the trained weights ("the model file") is not uplo
   4.4. `output_json`
 5. Modify the file `docker-compose/compose/.env`.  
    The variable `SHARED_VOLUME` should be the path to the `shared_volume` folder on your host. 
-7. Download the file `model.h5` from the shared [Google drive](https://drive.google.com/file/d/1Mf0__74ZPcseefAQvaK-y3_TQEyplGXX/view?usp=drive_link) and place it in `shared_volume/models`.
-8. Copy the `config.json` from `docker-compose/config/config.json` into `shared_volume/config`.
-9. Build `the fers-bff` docker image.  
-  9.1. Open terminal/cmd in `fers-bff`.  
-  9.2. Run `mvn clean install`.  
-  9.3. Run `docker build -t esense-bff`.
-13. Build the `emosense` docker image.  
-  13.1. Open terminal/cmd in `ai-fer-server`.  
-  13.2. Run `docker build -t esense`.
-16. Run docker-compose.  
-  16.1. Open terminal/cmd in `docker-compose/compose`.  
-  16.2. Run `docker-compose -f docker-compose-ai-bff.yaml up`.
-21. Open the browser to use/test the app. See next section.
-22. Shut down the docker containers by opening a new terminal and running the command: `docker-compose -f docker-compose-ai-bff.yaml down`
+6. Download the file `model.h5` from the shared [Google drive](https://drive.google.com/file/d/1Mf0__74ZPcseefAQvaK-y3_TQEyplGXX/view?usp=drive_link) and place it in `shared_volume/models`.
+7. Copy the `config.json` from `docker-compose/config/config.json` into `shared_volume/config`.
+8. Build `the fers-bff` docker image.  
+  8.1. Open terminal/cmd in `fers-bff`.  
+  8.2. Run `mvn clean install`.  
+  8.3. Run `docker build -t esense-bff`.
+9. Build the `emosense` docker image.  
+  9.1. Open terminal/cmd in `ai-fer-server`.  
+  9.2. Run `docker build -t esense`.
+10. Run docker-compose.  
+  10.1. Open terminal/cmd in `docker-compose/compose`.  
+  10.2. Run `docker-compose -f docker-compose-ai-bff.yaml up`.
+11. Open the browser to use/test the app. See next section.
+12. Shut down the docker containers by opening a new terminal and running the command: `docker-compose -f docker-compose-ai-bff.yaml down`
 
 ## 5 Instructions on How to Use the App
 1. Open the browser and navigate to the url http://localhost:8080/swagger-ui/index.html
