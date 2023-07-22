@@ -57,7 +57,7 @@ The resulting file containing the trained weights ("the model file") is not uplo
    The variable `SHARED_VOLUME` should be the path to the `shared_volume` folder on your host. 
 6. Download the file `model.h5` from the shared [Google drive](https://drive.google.com/file/d/1Mf0__74ZPcseefAQvaK-y3_TQEyplGXX/view?usp=drive_link) and place it in `shared_volume/models`.
 7. Copy the `config.json` from `docker-compose/config/config.json` into `shared_volume/config`.
-8. Build `the fers-bff` docker image.  
+8. Build the `fers-bff` docker image.  
   8.1. Open terminal/cmd in `fers-bff`.  
   8.2. Run `mvn clean install`.  
   8.3. Run `docker build -t esense-bff`.
