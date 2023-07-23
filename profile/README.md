@@ -63,7 +63,7 @@ The resulting file containing the trained weights ("the model file") is not uplo
   8.2. Run `mvn clean install`.  
   8.3. Run `docker build -t fers-bff .`.
 9. Build the `ai-fers` docker image.  
-  9.1. Open terminal/cmd in `ai-fers`.  
+  9.1. Open terminal/cmd in `ai-fer-server`.  
   9.2. Run `docker build -t ai-fers .`.
 10. Build the `facial-extraction` docker image.  
   10.1. Open terminal/cmd in `facial-extraction`.  
