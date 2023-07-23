@@ -4,36 +4,37 @@ A public readme for all organization projects
 ## 1 Project Outline
 This is a project to:
 - use deep learning techniques to train a model on images of isolated human faces and recognize the emotion expressed therein
-- use image segmentation techniques to isolate faces in _any_ image and perform the abovementioned classification task on each face
-- provide an interface (a console app, an API, and/or a web UI) to be able to use the trained model for inference on any custom image
+- use image segmentation libraries to isolate faces in _any_ image and perform the abovementioned classification task on each face
+- use face clustering libraries to group faces that belong to the same person together and determine the proportion of images over which each person exhibited each detected emotion
+- provide an interface (a console app, an API, and/or a web UI) to be able to expose the above functionalities in a user-friendly manner
 
 ## 2 Project Structure
 We use the following repos for this project:
 - docker-compose
-- ai-fer-server 
+- ai-fer-server
+- facial-extraction
 - fers-bff
 
 ## 3 Project Architecture
 ```
-            +---------+
-            |model.h5 <--------+
-            +---------+        | 
-                               |
-                               |
-                               | python ai model + server
-+--------------+            +--+------------+  
-|shared-volume |<-----------+ai-fer-service |  
-+------^-------+            +-----^---------+  
-       |                          |
-       | upload/download files    | 
-+------+--+                       |
-|fers-bff +-----------------------+
-+---^-----+
-    | Rest API
-    |
-+---+------+
-|front-end |
-+----------+
+                          +----------+
+                          | model.h5 <-------------+
+                          +----------+             | 
+                                                   |
+                                                   | python ai model + server
++-------------------+     +---------------+     +--+------------+  
+| facial-extraction +-----> shared-volume <-----+ ai-fer-server |  
++----^--------------+     +--^------------+     +---^-----------+  
+     |                       |                      |
+     |       upload/download | files                | 
+     |                  +----+-----+                |
+     +----------------- + fers-bff +----------------+
+                        +----^-----+
+                             | Rest API
+                             |
+                       +-----+-----+
+                       | front-end |
+                       +-----------+
 ```
 
 ### 3.1 The "AI" Model
@@ -64,17 +65,20 @@ The resulting file containing the trained weights ("the model file") is not uplo
 9. Build the `emosense` docker image.  
   9.1. Open terminal/cmd in `ai-fer-server`.  
   9.2. Run `docker build -t esense .`.
-10. Run docker-compose.  
-  10.1. Open terminal/cmd in `docker-compose/compose`.  
-  10.2. Run `docker-compose -f docker-compose-ai-bff.yaml up`.
-11. Open the browser to use/test the app. See next section.
-12. Shut down the docker containers by opening a new terminal and running the command: `docker-compose -f docker-compose-ai-bff.yaml down`
+10. Build the `facial-extraction` docker image.  
+  10.1. Open terminal/cmd in `facial-extraction`.  
+  10.2. Run `docker build -t facial-extraction .`.  
+11. Run docker-compose.  
+  11.1. Open terminal/cmd in `docker-compose/compose`.  
+  11.2. Run `docker-compose -f docker-compose-ai-bff.yaml up`.
+12. Open the browser to use/test the app. See next section.
+13. Shut down the docker containers by opening a new terminal and running the command: `docker-compose -f docker-compose-ai-bff.yaml down`
 
 ## 5 Instructions on How to Use the App
 1. Open the browser and navigate to the url http://localhost:8080/swagger-ui/index.html
-2. Use the following 3 api endpoints of OpenAI (Swagger) in order:  
+2. Use the following 3 API endpoints of OpenAPI (Swagger) in order:  
   2.1. `POST` http://localhost:8080/api/v1/file/upload  
-  2.2. `GET` http://localhost:8080/api/v1/predictor  
+  2.2. `GET` http://localhost:8080/api/v1/predictor/image/process/{uid}  
   2.3. `GET` http://localhost:8080/api/v1/report/download/{uid}
 
 **NOTE:** The UID should be the same across all 3 calls. Do the calls in order. 
