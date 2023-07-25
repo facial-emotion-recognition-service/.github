@@ -75,6 +75,7 @@ The resulting file containing the trained weights ("the model file") is not uplo
 13. Shut down the docker containers by opening a new terminal and running the command: `docker-compose -f docker-compose-ai-bff.yaml down`
 
 ## 5 Instructions on How to Use the App
+### 5.1 Emotion Recognition
 1. Open the browser and navigate to the url http://localhost:8080/swagger-ui/index.html
 2. Use the following 3 API endpoints of OpenAPI (Swagger) in order:  
   2.1. `POST` http://localhost:8080/api/v1/file/upload  
@@ -82,6 +83,18 @@ The resulting file containing the trained weights ("the model file") is not uplo
   2.3. `GET` http://localhost:8080/api/v1/report/download/{uid}
 
 **NOTE:** The UID should be the same across all 3 calls. Do the calls in order. 
-- The first calls asks to upload an image of an isolated face. It returns a UID.
-- The second one processes that image and creates a json report using the UID.
-- The third downloads the json report using the UID.
+- The first call asks to upload an image of an isolated face. It returns a UID.
+- The second one processes that image and creates a JSON report using the UID.
+- The third downloads the JSON report using the UID.
+
+### 5.2 Face Extraction
+1. Open the browser and navigate to the url http://localhost:8080/swagger-ui/index.html
+2. Use the following 3 API endpoints of OpenAPI (Swagger) in order:  
+  3.1. `POST` http://localhost:8080/api/v1/file/upload  
+  3.2. `POST` http://localhost:8080/api/v1/convert/file/format  
+  3.3. `GET` http://localhost:8080//api/v1/image/{uid}/faces  
+
+**NOTE:** Do the calls in order.  
+- The first call asks to upload an image containing zero or more faces. It returns a UID.
+- The second call, which is optional, converts an image from one format to another. Use it if the image is not in the expected format (JPEG). It takes the source file UID from the first call, a source file format (e.g. `"gif"`) and a target file format (set it to `"jpg"` for the next step to work). It returns a new UID for the converted file.  
+- The third call takes the UID of a JPEG file and creates a JSON report with a list of `{x, y, w, h}` coordinates, with each (x, y) being the top-left corner and (w, h) being the width and height of a detected face.
