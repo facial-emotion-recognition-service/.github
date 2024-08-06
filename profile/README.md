@@ -6,6 +6,8 @@ In this project we:
 - used image segmentation libraries to isolate faces in _any_ image so we can perform the abovementioned classification task on each face
 - made a web UI to expose the above functionalities in a user-friendly interface
 
+You can access the deployed version of the project and try it out [here](https://hfer-farid-nathan.streamlit.app/).
+
 ## 2. Project Structure
 We have the following repos in this project. Please check each repo's README for further details.
 - [hfer](https://github.com/facial-emotion-recognition-service/hfer) for the back end
